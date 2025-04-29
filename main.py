@@ -2,6 +2,8 @@
 
 import pygame as pg
 import time
+import asyncio
+
 pg.init()
 
 white = (250, 250, 250)
@@ -30,8 +32,8 @@ board = [['','','',''],
    ['','','','']]
 
 
-X_img = pg.image.load('C:/MyFiles/pyproj/pygame_env/HPPS/x_modified.png')
-O_img = pg.image.load('C:/MyFiles/pyproj/pygame_env/HPPS/o_modified.png')
+X_img = pg.image.load('./assets/images/x_modified.png')
+O_img = pg.image.load('./assets/images/o_modified.png')
 
 X_img = pg.transform.scale(X_img, (70, 70))
 O_img = pg.transform.scale(O_img, (70, 70))
@@ -193,7 +195,7 @@ def check_click():
 
 game_window()
 
-def main():
+async def main():
   global running
   
   while running:
@@ -211,5 +213,6 @@ def main():
     update_text()
 
     pg.display.update()
+    await asyncio.sleep(0)
 
-main()
+asyncio.run(main())
